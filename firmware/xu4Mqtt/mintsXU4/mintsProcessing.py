@@ -273,8 +273,8 @@ def climateDataPrepV2(nodeID,climateSensor,WIMDA,YXXDR,mergedPklsFolder):
     climateSensor   = superReader(nodeID,climateSensor)
     mintsData = merger([climateSensor, WIMDA,YXXDR])
 
-    pd.to_pickle(mintsData,getPathGeneric(mergedPklsFolder,nodeID,climateSensorStr,"pkl") )
-    print(mintsData)
+    pd.to_pickle(mintsData.dropna(),getPathGeneric(mergedPklsFolder,nodeID,climateSensorStr,"pkl") )
+    print(mintsData.dropna())
 
     
 def climateDataPrep(nodeData,nodeID,climateSensor,WIMDA,YXXDR,mergedPklsFolder):
