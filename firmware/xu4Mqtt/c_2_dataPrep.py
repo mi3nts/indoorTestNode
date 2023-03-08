@@ -14,8 +14,8 @@ from pandas.core.frame import DataFrame
 from mintsXU4 import mintsProcessing as mP
 from mintsXU4 import mintsDefinitions as mD
 
-nodeIDs              = mD.mintsDefinitions['nodeIDs']
-airMarID             = mD.mintsDefinitions['airmarID']
+nodeID               = mD.nodeID
+airMarID             = mD.airMarID
 rawPklsFolder        = mD.rawPklsFolder
 referencePklsFolder  = mD.referencePklsFolder
 mergedPklsFolder     = mD.mergedPklsFolder
@@ -34,10 +34,10 @@ WIMDA  = pd.read_pickle(mP.getPathGeneric(referencePklsFolder,airMarID,"WIMDA","
 YXXDR  = pd.read_pickle(mP.getPathGeneric(referencePklsFolder,airMarID,"YXXDR","pkl"))
 
 print("--------------")
+climateSensors = ["BME280","BME680","SCD30"]
 
-for nodeData in nodeIDs:
-    nodeID        = nodeData['nodeID']
-    climateSensor = nodeData['climateSensor']
+for climateSensor in climateSensors:
+    climateSensor = climateSensors['climateSensor']
     print("=====================MINTS=====================")
     print("Prepearing Climate data for Node: " + nodeID +" with Climate Sensor: " + climateSensor)
     print("-----------------------------------------------")

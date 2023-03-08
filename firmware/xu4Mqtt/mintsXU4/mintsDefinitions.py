@@ -65,6 +65,20 @@ dataFolderMQTTReference   = "/home/teamlary/mintsData/referenceMQTT"
 dataFolder                = "/home/teamlary/mintsData/raw"
 dataFolderMQTT            = "/home/teamlary/mintsData/rawMQTT"
 
+dataFolderPre             = "/home/teamlary/mintsData"
+rawPklsFolder             = dataFolderPre + "/rawPkls"
+referencePklsFolder       = dataFolderPre + "/referencePkls"
+mergedPklsFolder          = dataFolderPre + "/mergedPkls"
+modelsPklsFolder          = dataFolderPre + "/modelsPkls"
+
+liveFolder                = dataFolderPre + "/liveUpdate/results"
+
+# Change Accordingly  
+
+dataFolderMQTTCalib       = dataFolderPre + "/calibratedMQTT"
+timeSpan                  = 30
+
+
 
 macAddress            = findMacAddress()
 nodeID                = macAddress
