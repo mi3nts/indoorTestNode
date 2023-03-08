@@ -389,7 +389,6 @@ def climateCalibrationV2(nodeID,dateNow, mintsData,climateTargets,climateSensor)
                 ("rmseTest"          ,rmseTest),
                 ("r2Train"           ,r2Train),
                 ("r2Test"            ,r2Test),
-                ("sensorDate"        ,sensorDate),
                 ("dateNow"           ,dateNow)
                ])
    
