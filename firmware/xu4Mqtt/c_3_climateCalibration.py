@@ -38,9 +38,7 @@ for climateSensor in climateSensors:
     print("-----------------------------------------------")
     try:
         mintsData = pd.read_pickle(mP.getPathGeneric(mergedPklsFolder,nodeID,climateSensor,"pkl"))
-
-    #     mintsData = mP.oobClimateCheck(mintsData,nodeID,climateSensor,dateNow,modelsPklsFolder,sensorDate)
-    #     mP.climateCalibration(nodeID,dateNow, mintsData,climateTargets,climateSensor,sensorDate)
+        mP.climateCalibrationV2(nodeID,dateNow, mintsData,climateTargets,climateSensor)
 
     except Exception as e:
         print("[ERROR] Could not publish data, error: {}".format(e))
