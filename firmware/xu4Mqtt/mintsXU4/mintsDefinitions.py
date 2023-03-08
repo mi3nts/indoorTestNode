@@ -127,7 +127,8 @@ if __name__ == "__main__":
     for dev in canareePorts:
         print("\t{0}".format(dev))
 
-    # mdls = []
+    mdls = []
 
-    # for climateSensor in climateSensors:
-    #     # mdls[target + "_MDL" ] = pd.read_pickle(mP.getPathGeneric(mergedPklsFolder,nodeID,climateSensor,"pkl"))
+    for target in climateTargets:
+        for climateSensor in climateSensors:
+            mdls[target + "_MDL" ] = pd.read_pickle((modelsPklsFolder,nodeID,target+"_MDL_"+climateSensor,"pkl"))
