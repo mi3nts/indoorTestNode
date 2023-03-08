@@ -119,24 +119,16 @@ if __name__ == "__main__":
     print("MQTT Credentials File      : {0}".format(mqttCredentialsFile))
     print("MQTT Broker and Port       : {0}, {1}".format(mqttOn,mqttPort))
 
-    #-------------------------------------------#
-    print("RG15 Ports:")
-    for dev in rg15Ports:
-        print("\t{0}".format(dev))
-    #-------------------------------------------#
     print("IPS Ports:")
     for dev in ipsPorts:
         print("\t{0}".format(dev))
-    #-------------------------------------------#
-    print("Canaree Ports:")
-    for dev in canareePorts:
-        print("\t{0}".format(dev))
+
 
     mdls = {}
 
     for target in climateTargets:
         for climateSensor in climateSensors:
-            mdls[target + "_MDL"] = pd.read_pickle(getPathGeneric(modelsPklsFolder,nodeID,target+"_MDL_"+climateSensor,"pkl"))
+            mdls[target +"_" +climateSensor + "_MDL"] = pd.read_pickle(getPathGeneric(modelsPklsFolder,nodeID,target+"_MDL_"+climateSensor,"pkl"))
 
 
     print(mdls)

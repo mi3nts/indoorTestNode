@@ -39,6 +39,8 @@ latestDisplayOn          = mD.latestDisplayOn
 dataFolderMQTT           = mD.dataFolderMQTT
 latestOn                 = mD.latestOn
 mqttOn                   = mD.mqttOn
+climateSensors           = mD.climateSensors
+mdls                     = mD.mdls
 
 
 def sensorFinisher(dateTime,sensorName,sensorDictionary):
@@ -55,6 +57,46 @@ def sensorFinisher(dateTime,sensorName,sensorDictionary):
     print("-----------------------------------")
     print(sensorName)
     print(sensorDictionary)
+
+# At this point if the sensor name is a climate sensor 
+
+def sensorFinisherCalibrated(dateTime,sensorName,sensorDictionary):
+  
+    sensorNamePost = sensorName + "CC"
+    if sensorName == "BME280" or sensorName == "BME680" or sensorName == "SCD30": 
+         input = [sensorDictionary["temperature"],sensorDictionary["pressure"],sensorDictionary["humidity"]]
+         sensorDictionary["temperatureWIMDA"] = mdls["WIMDA_airTemperature_" + sensorName +"_MDL"].predict(input)
+         sensorDictionary["pressureWIMDA"]    = mdls["WIMDA_barrometricPressureBars_" + sensorName +"_MDL"].predict(input)
+         sensorDictionary["humidityWIMDA"]    = mdls["WIMDA_relativeHumidity_" + sensorName +"_MDL"].predict(input)
+         sensorDictionary["dewPointWIMDA"]    = mdls["WIMDA_dewPoint_" + sensorName +"_MDL"].predict(input)
+         sensorDictionary["pressureYXXDR"]    = mdls["YXXDR_barrometricPressureBars_" + sensorName +"_MDL"].predict(input)
+
+    print(sensorDictionary)
+
+    # At this point if the sensor name is a climate sensor 
+    # if sensorName in mD.climateSensors: 
+    #     #Getting Write Path
+    #     sensorName = sensorName + "CAL"
+    #     writePath = getWritePath(sensorName,dateTime)
+    #     exists = directoryCheck(writePath)
+    # # Get a calibrated results 
+    #     mdl[]
+
+
+    #   
+    # print(writePath)
+    # if(latestOn):
+    #    mL.writeJSONLatest(sensorDictionary,sensorName)
+    # if(mqttOn):
+    #    mL.writeMQTTLatest(sensorDictionary,sensorName)   
+
+    # print("-----------------------------------")
+    # print(sensorName)
+    # print(sensorDictionary)
+
+
+
+
 
 
 def sensorFinisherReference(dateTime,sensorName,sensorDictionary):
