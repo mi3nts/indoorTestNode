@@ -352,6 +352,8 @@ def climateCalibrationV2(nodeID,dateNow, mintsData,climateTargets,climateSensor)
     print("-----------------------------------------------")
     for targets in climateTargets:
         target = targets['target']
+        print(target)
+
         targetData = mintsData[target]
         print("Running calibraion for : " + target )
         if climateSensor == "BME280":
