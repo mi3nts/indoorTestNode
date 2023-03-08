@@ -77,7 +77,7 @@ def superReader(nodeID,sensorID):
         floatSum  = 9   
         floatSum2 = -1        
     elif sensorID == "SCD30":
-        floatSum  = 4       
+        floatSum  = 3       
         floatSum2 = -1 
     elif sensorID == "WIMDA":
         floatSum  = 12   
