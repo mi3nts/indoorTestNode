@@ -25,7 +25,7 @@ print("Data Folder: " + dataFolder)
 print("Data Folder Raw: " + dataFolderRaw)
 print("Data Folder Ref: " + dataFolderRef)
 
-sysStr = 'rsync -avzrtu -e "ssh" ' +  "--include='*.csv' --include='*/' --exclude='*' mints@10.247.238.16:Downloads/reference/" + airMarID + " " + dataFolderRef
+sysStr = 'rsync -avzrtu -e "ssh" ' +  "--include='2023_03*' --include='*.csv' --include='*/' --exclude='*' mints@10.247.238.16:Downloads/reference/" + airMarID + " " + dataFolderRef
 print(sysStr)
 # os.system(sysStr)
 
