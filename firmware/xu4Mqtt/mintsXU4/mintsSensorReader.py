@@ -71,7 +71,7 @@ def sensorFinisherCalibrated(dateTime,sensorName,sensorDictionary):
         input = [sensorDictionary["temperature"],sensorDictionary["humidity"]]
 
     print("TEST 1")
-    sensorDictionary = OrderedDict([
+    sensorDictionary1 = OrderedDict([
         ("dateTime"          ,str(dateTime)),
         ("temperatureWIMDA"  ,mdls["WIMDA_airTemperature_" + sensorName +"_MDL"].predict(np.array(input).reshape(1,-1))[0][0]),
         ("eventAccumulation" ,mdls["WIMDA_barrometricPressureBars_" + sensorName +"_MDL"].predict(np.array(input).reshape(1,-1))[0][0]),
