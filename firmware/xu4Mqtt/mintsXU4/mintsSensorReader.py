@@ -71,14 +71,16 @@ def sensorFinisherCalibrated(dateTime,sensorName,sensorDictionary):
         input = [sensorDictionary["temperature"],sensorDictionary["humidity"]]
 
     print("TEST 1")
-    sensorDictionary1 = OrderedDict([
-        ("dateTime"          ,str(dateTime)),
-        ("temperatureWIMDA"  ,mdls["WIMDA_airTemperature_" + sensorName +"_MDL"].predict(np.array(input).reshape(1,-1))[0][0]),
-        ("eventAccumulation" ,mdls["WIMDA_barrometricPressureBars_" + sensorName +"_MDL"].predict(np.array(input).reshape(1,-1))[0][0]),
-        ("totalAccumulation" ,mdls["WIMDA_relativeHumidity_" + sensorName +"_MDL"].predict(np.array(input).reshape(1,-1))[0][0]),
-        ("rainPerInterval"   ,mdls["WIMDA_dewPoint_" + sensorName +"_MDL"].predict(np.array(input).reshape(1,-1))[0][0])
-        ("rainPerInterval"   ,mdls["YXXDR_barrometricPressureBars_" + sensorName +"_MDL"].predict(np.array(input).reshape(1,-1))[0][0])    	    
-             ])
+    print(mdls["WIMDA_airTemperature_" + sensorName +"_MDL"].predict(np.array(input).reshape(1,-1))[0][0])
+
+    # sensorDictionary1 = OrderedDict([
+    #     ("dateTime"          ,str(dateTime)),
+    #     ("temperatureWIMDA"  ,mdls["WIMDA_airTemperature_" + sensorName +"_MDL"].predict(np.array(input).reshape(1,-1))[0][0]),
+    #     ("eventAccumulation" ,mdls["WIMDA_barrometricPressureBars_" + sensorName +"_MDL"].predict(np.array(input).reshape(1,-1))[0][0]),
+    #     ("totalAccumulation" ,mdls["WIMDA_relativeHumidity_" + sensorName +"_MDL"].predict(np.array(input).reshape(1,-1))[0][0]),
+    #     ("rainPerInterval"   ,mdls["WIMDA_dewPoint_" + sensorName +"_MDL"].predict(np.array(input).reshape(1,-1))[0][0])
+    #     ("rainPerInterval"   ,mdls["YXXDR_barrometricPressureBars_" + sensorName +"_MDL"].predict(np.array(input).reshape(1,-1))[0][0])    	    
+    #          ])
 
 
     print(sensorDictionary)
