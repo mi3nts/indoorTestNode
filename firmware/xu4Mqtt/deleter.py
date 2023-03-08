@@ -6,7 +6,8 @@ from mintsXU4 import mintsSensorReader as mSR
 from mintsXU4 import mintsDefinitions as mD
 
 dataFolder    = mD.dataFolder
-dataFolderRef    = mD.dataFolderReference
+dataFolderCC  = mD.dataFolderCC
+dataFolderRef = mD.dataFolderReference
 macAddress    = mD.macAddress
 
 
@@ -38,21 +39,31 @@ def main():
         except OSError as e:
             print ("Error: %s - %s." % (e.filename, e.strerror))
 
+    for deleteDate in deleteDays:
+        try:
+            dirPath = os.path.normpath(getDeletePathCC(deleteDate))
+            print("Deleting: "+ dirPath)
+            if os.path.exists(dirPath):
+                shutil.rmtree(dirPath)
 
+        except OSError as e:
+            print ("Error: %s - %s." % (e.filename, e.strerror))
+            
+            
+            
 def getDeletePath(deleteDate):
-    # deleteDate =  datetime.datetime.now() -  datetime.timedelta(daysBefore)
     deletePath = dataFolder+"/"+macAddress+"/"+str(deleteDate.year).zfill(4)  + \
     "/" + str(deleteDate.month).zfill(2)+ "/"+str(deleteDate.day).zfill(2)
-    # print(deletePath)
     return deletePath;
   
+def getDeletePathCC(deleteDate):
+    deletePath = dataFolderCC+"/"+macAddress+"/"+str(deleteDate.year).zfill(4)  + \
+    "/" + str(deleteDate.month).zfill(2)+ "/"+str(deleteDate.day).zfill(2)
+    return deletePath;  
 
 def getDeletePathRef(deleteDate):
-    # deleteDate =  datetime.datetime.now() -  datetime.timedelta(daysBefore)
     deletePath = dataFolderRef+"/"+macAddress+"/"+str(deleteDate.year).zfill(4)  + \
     "/" + str(deleteDate.month).zfill(2)+ "/"+str(deleteDate.day).zfill(2)
-    # print(deletePath)
-
     return deletePath;
 
 
