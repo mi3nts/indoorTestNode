@@ -368,7 +368,7 @@ def climateCalibrationV2(nodeID,dateNow, mintsData,climateTargets,climateSensor)
         print("Target Data")
         print(inputData)
         x_train, x_test, y_train, y_test = train_test_split(inputData, targetData, test_size=0.2, random_state=0)
-        
+        print(x_train)
         regressor = LinearRegression()
         regressor.fit(x_train, y_train)
    
