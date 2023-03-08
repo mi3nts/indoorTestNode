@@ -73,7 +73,7 @@ def sensorFinisherCalibrated(dateTime,sensorName,sensorDictionary):
     print("TEST 1")
     print(mdls["WIMDA_airTemperature_" + sensorName +"_MDL"].predict(np.array(input).reshape(1,-1))[0][0])
 
-    sensorDictionary1 = OrderedDict([
+    sensorDictionaryPost = OrderedDict([
         ("dateTime"          ,str(dateTime)),
         ("temperatureWIMDA"  ,mdls["WIMDA_airTemperature_" + sensorName +"_MDL"].predict(np.array(input).reshape(1,-1))[0][0]),
     ])
@@ -85,7 +85,7 @@ def sensorFinisherCalibrated(dateTime,sensorName,sensorDictionary):
         #      ])
 
 
-    print(sensorDictionary)
+    print(sensorDictionaryPost)
 
     # At this point if the sensor name is a climate sensor 
     # if sensorName in mD.climateSensors: 
