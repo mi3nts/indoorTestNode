@@ -66,8 +66,6 @@ latestOn                = mD.latestOn
 mqttOn                  = mD.mqttOn
 
 
-
-
 def superReader(nodeID,sensorID):
     if sensorID == "BME280":
         floatSum = 4
@@ -105,17 +103,12 @@ def sensorDefinitions(sensorID):
         return {'dateTime','barrometricPressureBars'}                               
     return [];
 
-
-
-
 def gpsCropCoordinates(mintsData,latitude,longitude,latRange,longRange):
- 
     mintsData = mintsData[mintsData.GPSGPGGA2_latitudeCoordinate>latitude-abs(latRange)]
     mintsData = mintsData[mintsData.GPSGPGGA2_latitudeCoordinate<latitude+abs(latRange)]
     mintsData = mintsData[mintsData.GPSGPGGA2_longitudeCoordinate>longitude-abs(longRange)]
     mintsData = mintsData[mintsData.GPSGPGGA2_longitudeCoordinate<longitude+abs(longRange)]
     return mintsData;
-    
 
 def merger(data_frames):
     print("Merging Data Frames")
@@ -137,7 +130,9 @@ def sensorReader(nodeID,sensorID,floatSum):
             dataFrame = pd.read_csv(f)
             #print(dataFrame.dtypes)
             floatSumNow = sum(dataFrame.dtypes == float64 )
-
+            print(floatSum)
+            print(floatSumNow)
+            
 
             if(floatSum == floatSumNow):
                 dataNow = pd.read_csv(f)
@@ -150,7 +145,6 @@ def sensorReader(nodeID,sensorID,floatSum):
         except Exception as e:
             print("[ERROR] Could not publish data, error: {}".format(e))
     return pd.concat(dataIn)
-
 
 def sensorReaderPost(dataIn,sensorID):
     #dataIn.index = pd.to_datetime(dataIn.dateTime)
