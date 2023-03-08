@@ -76,14 +76,11 @@ def sensorFinisherCalibrated(dateTime,sensorName,sensorDictionary):
     sensorDictionaryPost = OrderedDict([
         ("dateTime"          ,str(dateTime)),
         ("temperatureWIMDA"  ,mdls["WIMDA_airTemperature_" + sensorName +"_MDL"].predict(np.array(input).reshape(1,-1))[0][0]),
+        ("pressureWIMDA"     ,mdls["WIMDA_barrometricPressureBars_" + sensorName +"_MDL"].predict(np.array(input).reshape(1,-1))[0][0]),
+        ("humidityWIMDA"     ,mdls["WIMDA_relativeHumidity_" + sensorName +"_MDL"].predict(np.array(input).reshape(1,-1))[0][0]),
+        ("dewPointWIMDA"     ,mdls["WIMDA_dewPoint_" + sensorName +"_MDL"].predict(np.array(input).reshape(1,-1))[0][0]),
+        ("pressureYXXDR"     ,mdls["YXXDR_barrometricPressureBars_" + sensorName +"_MDL"].predict(np.array(input).reshape(1,-1))[0][0]),
     ])
-
-        # ("eventAccumulation" ,mdls["WIMDA_barrometricPressureBars_" + sensorName +"_MDL"].predict(np.array(input).reshape(1,-1))[0][0]),
-        # ("totalAccumulation" ,mdls["WIMDA_relativeHumidity_" + sensorName +"_MDL"].predict(np.array(input).reshape(1,-1))[0][0]),
-        # ("rainPerInterval"   ,mdls["WIMDA_dewPoint_" + sensorName +"_MDL"].predict(np.array(input).reshape(1,-1))[0][0])
-        # ("rainPerInterval"   ,mdls["YXXDR_barrometricPressureBars_" + sensorName +"_MDL"].predict(np.array(input).reshape(1,-1))[0][0])    	    
-        #      ])
-
 
     print(sensorDictionaryPost)
 
