@@ -347,19 +347,46 @@ def climateCalibration(nodeID,dateNow, mintsData,climateTargets,climateSensor,se
   
 
 def climateCalibrationV2(nodeID,dateNow, mintsData,climateTargets,climateSensor):
-    if climateSensor == "BME280":
-            inputData  = mintsData[['BME280_temperature','BME280_pressure','BME280_humidity']]
-    if climateSensor == "BME680":
-            inputData  = mintsData[['BME680_temperature','BME680_pressure','BME680_humidity']]
-    if climateSensor == "SCD30":
-            inputData  = mintsData[['SCD30_temperature','SCD30_humidity']]
-    
+
     for target in climateTargets:
         targetData = mintsData[[target]]
+        if climateSensor == "BME280":
+            if "Temperature" in target:
+                inputData  = mintsData[['BME280_temperature']]
+            if "Pressure" in target:
+                inputData  = mintsData[['BME280_pressure']]                
+            if "Humidity" in target:
+                inputData  = mintsData[['BME280_humidity']]
+            if "dewPoint" in target:
+                inputData  = mintsData[['BME280_temperature','BME280_pressure','BME280_humidity']]
+
+        if climateSensor == "BME680":
+            if "Temperature" in target:
+                inputData  = mintsData[['BME680_temperature']]
+            if "Pressure" in target:
+                inputData  = mintsData[['BME680_pressure']]
+            if "Humidity" in target:
+                inputData  = mintsData[['BME680_humidity']]
+            if "dewPoint" in target:
+                inputData  = mintsData[['BME680_temperature','BME680_pressure','BME680_humidity']]
+            
+        if climateSensor == "SCD30":
+            if "Temperature" in target:
+                inputData  = mintsData[['SCD30_temperature']]
+            if "Pressure" in target:
+                inputData  = mintsData[['SCD30_temperature,SCD30_humidty']]
+            if "Humidity" in target:
+                inputData  = mintsData[['SCD30_humidity']]
+            if "dewPoint" in target:
+                inputData  = mintsData[['SCD30_temperature,SCD30_humidty']]
+    
+
+
+
+ 
         print("-------=========-------")
         print("=====================MINTS=====================")
         print("Climate data calibraion for Node: " + nodeID +" with Climate Sensor: " + climateSensor)
-        print("-----------------------------------------------")
         print("Running calibraion for : " + target )
       
         x_train, x_test, y_train, y_test = train_test_split(inputData, targetData, test_size=0.2, random_state=0)
