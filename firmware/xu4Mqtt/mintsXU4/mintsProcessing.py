@@ -356,8 +356,6 @@ def climateCalibrationV2(nodeID,dateNow, mintsData,climateTargets,climateSensor)
             inputData  = mintsData[['BME680_temperature','BME680_pressure','BME680_humidity']]
     if climateSensor == "SCD30":
             inputData  = mintsData[['SCD30_temperature','SCD30_humidity']]
-
-    
     
     for target in climateTargets:
         targetData = mintsData[[target]]
