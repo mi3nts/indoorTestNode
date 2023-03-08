@@ -69,7 +69,7 @@ def sensorFinisherCalibrated(dateTime,sensorName,sensorDictionary):
         print("BME280 calibrating")
         input = [sensorDictionary["temperature"],sensorDictionary["pressure"],sensorDictionary["humidity"]]
         print(input)
-        sensorDictionary["temperatureWIMDA"] = mdls["WIMDA_airTemperature_" + sensorName +"_MDL"].predict(input)
+        sensorDictionary["temperatureWIMDA"] = mdls["WIMDA_airTemperature_" + sensorName +"_MDL"].predict(input.reshape(1,-1))[0]
     #      sensorDictionary["pressureWIMDA"]    = mdls["WIMDA_barrometricPressureBars_" + sensorName +"_MDL"].predict(input)
     #      sensorDictionary["humidityWIMDA"]    = mdls["WIMDA_relativeHumidity_" + sensorName +"_MDL"].predict(input)
     #      sensorDictionary["dewPointWIMDA"]    = mdls["WIMDA_dewPoint_" + sensorName +"_MDL"].predict(input)
