@@ -67,6 +67,8 @@ mqttOn                  = mD.mqttOn
 
 
 def superReader(nodeID,sensorID):
+    print("Test 2")
+            
     if sensorID == "BME280":
         floatSum = 4
     if sensorID == "BME680":
@@ -76,12 +78,13 @@ def superReader(nodeID,sensorID):
     if sensorID == "SCD30":
         floatSum = 4       
     if sensorID == "WIMDA":
+        print("Test 3")
         floatSum = 12       
     if sensorID == "YXXDR":
         floatSum = 4             
     else: 
         return []
-    print("TEST 2")
+    print("TEST 4")
     dataIn = sensorReader(nodeID,sensorID,floatSum)
     if(len(dataIn))>0:
         dataIn = sensorReaderPost(dataIn,sensorID)
