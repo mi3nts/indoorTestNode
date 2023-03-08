@@ -2,9 +2,14 @@
 from getmac import get_mac_address
 import serial.tools.list_ports
 import pandas as pd
-import mintsProcessing as mP
 
 # Added March 1sr 2023: for ports with same names and PID 
+
+
+def getPathGeneric(dataFolder,nodeID,sensorID,ext):
+    writePath = dataFolder+"/"+nodeID+"/"+"MINTS_"+ nodeID+ "_"+sensorID+"." + ext
+    # directoryCheck(writePath)
+    return writePath;
 
 def findPortV2(inStr,lenStr):
     ports    = list(serial.tools.list_ports.comports())
@@ -131,7 +136,7 @@ if __name__ == "__main__":
 
     for target in climateTargets:
         for climateSensor in climateSensors:
-            mdls[target + "_MDL" ] = pd.read_pickle(  mP.getPathGeneric(modelsPklsFolder,nodeID,target+"_MDL_"+climateSensor,"pkl"))
+            mdls[target + "_MDL" ] = pd.read_pickle(getPathGeneric(modelsPklsFolder,nodeID,target+"_MDL_"+climateSensor,"pkl"))
 
 
     print(mdls)
