@@ -41,7 +41,7 @@ latestOn                 = mD.latestOn
 mqttOn                   = mD.mqttOn
 climateSensors           = mD.climateSensors
 mdls                     = mD.mdls
-
+dataFolderCC             = mD.climateCalibratedFolder
 
 def sensorFinisher(dateTime,sensorName,sensorDictionary):
     #Getting Write Path
@@ -64,7 +64,6 @@ def sensorFinisher(dateTime,sensorName,sensorDictionary):
 
 def sensorFinisherCalibrated(dateTime,sensorName,sensorDictionary):
     print("Calibrating sensor data")
-    sensorNamePost = sensorName + "CC"
     if sensorName == "BME280" or sensorName == "BME680": 
         input = [sensorDictionary["temperature"],sensorDictionary["pressure"],sensorDictionary["humidity"]]
     if sensorName == "SCD30": 
@@ -80,30 +79,16 @@ def sensorFinisherCalibrated(dateTime,sensorName,sensorDictionary):
     ])
 
     print(sensorDictionaryPost)
-
-    # At this point if the sensor name is a climate sensor 
-    # if sensorName in mD.climateSensors: 
-    #     #Getting Write Path
-    #     sensorName = sensorName + "CAL"
-    #     writePath = getWritePath(sensorName,dateTime)
-    #     exists = directoryCheck(writePath)
-    # # Get a calibrated results 
-    #     mdl[]
-
-
-    #   
-    # print(writePath)
-    # if(latestOn):
-    #    mL.writeJSONLatest(sensorDictionary,sensorName)
-    # if(mqttOn):
-    #    mL.writeMQTTLatest(sensorDictionary,sensorName)   
-
-    # print("-----------------------------------")
-    # print(sensorName)
-    # print(sensorDictionary)
-
-
-
+    sensorName = sensorName + "CC"
+    writePath = getWritePathCC(sensorName,dateTime)
+    exists = directoryCheck(writePath)
+    print(writePath)
+    writeCSV2(writePath,sensorDictionary,exists)
+    print(writePath)    
+    if(latestOn):
+        mL.writeJSONLatest(sensorDictionary,sensorName)
+    if(mqttOn):
+        mL.writeMQTTLatest(sensorDictionary,sensorName)   
 
 
 
@@ -1200,6 +1185,11 @@ def getWritePathReference(labelIn,dateTime):
     #Example  : MINTS_0061_OOPCN3_2019_01_04.csv
     writePath = dataFolderReference+"/"+macAddress+"/"+str(dateTime.year).zfill(4)  + "/" + str(dateTime.month).zfill(2)+ "/"+str(dateTime.day).zfill(2)+"/"+ "MINTS_"+ macAddress+ "_" +labelIn + "_" + str(dateTime.year).zfill(4) + "_" +str(dateTime.month).zfill(2) + "_" +str(dateTime.day).zfill(2) +".csv"
 
+    return writePath;
+
+def getWritePathCC(labelIn,dateTime):
+    #Example  : MINTS_0061_OOPCN3_2019_01_04.csv
+    writePath = dataFolderCC+"/"+macAddress+"/"+str(dateTime.year).zfill(4)  + "/" + str(dateTime.month).zfill(2)+ "/"+str(dateTime.day).zfill(2)+"/"+ "MINTS_"+ macAddress+ "_" +labelIn + "_" + str(dateTime.year).zfill(4) + "_" +str(dateTime.month).zfill(2) + "_" +str(dateTime.day).zfill(2) +".csv"
     return writePath;
 
 
