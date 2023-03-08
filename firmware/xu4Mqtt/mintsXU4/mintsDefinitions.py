@@ -92,6 +92,7 @@ rg15Ports             = findPortV2("USB-Serial Controller",21)
 canareePorts          = findPortV2("Canaree PM",10)
 
 ipsPorts              = ["/dev/ttyS1"]
+climateSensors        = ["BME280","BME680","SCD30"]
 
 # For MQTT 
 mqttOn                = True
