@@ -37,7 +37,6 @@ print("--------------")
 climateSensors = ["BME280","BME680","SCD30"]
 
 for climateSensor in climateSensors:
-    climateSensor = climateSensors['climateSensor']
     print("=====================MINTS=====================")
     print("Prepearing Climate data for Node: " + nodeID +" with Climate Sensor: " + climateSensor)
     print("-----------------------------------------------")
