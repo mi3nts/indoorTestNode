@@ -36,10 +36,11 @@ for climateSensor in climateSensors:
     print("=====================MINTS=====================")
     print("Climate data Calibration for Node: " + nodeID +" with Climate Sensor: " + climateSensor)
     print("-----------------------------------------------")
-    try:
-        mintsData = pd.read_pickle(mP.getPathGeneric(mergedPklsFolder,nodeID,climateSensor,"pkl"))
-        mP.climateCalibrationV2(nodeID,dateNow, mintsData,climateTargets,climateSensor)
-
-    except Exception as e:
-        print("[ERROR] Could not publish data, error: {}".format(e))
+    mintsData = pd.read_pickle(mP.getPathGeneric(mergedPklsFolder,nodeID,climateSensor,"pkl"))
+    mP.climateCalibrationV2(nodeID,dateNow, mintsData,climateTargets,climateSensor)
+    
+    # try:
+   
+    # except Exception as e:
+    #     print("[ERROR] Could not publish data, error: {}".format(e))
     
