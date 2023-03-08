@@ -115,10 +115,8 @@ mdls = {}
 
 for target in climateTargets:
     for climateSensor in climateSensors:
-        mdls[target +"_" +climateSensor + "_MDL"] = pd.read_pickle(getPathGeneric(modelsPklsFolder,nodeID,target+"_MDL_"+climateSensor,"pkl"))
+        mdls[target +"_" +climateSensor + "_MDL"] = pd.read_pickle(getPathGeneric(modelsPklsFolder,nodeID,target+"_MDL_"+climateSensor,"pkl"));
 
-
-    print(mdls)
 if __name__ == "__main__":
     # the following code is for debugging
     # to make sure everything is working run python3 mintsDefinitions.py 
