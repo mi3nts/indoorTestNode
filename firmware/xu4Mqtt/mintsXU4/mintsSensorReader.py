@@ -70,6 +70,7 @@ def sensorFinisherCalibrated(dateTime,sensorName,sensorDictionary):
     if sensorName == "SCD30": 
         input = [sensorDictionary["temperature"],sensorDictionary["humidity"]]
 
+    print("TEST 1")
     sensorDictionary = OrderedDict([
         ("dateTime"          ,str(dateTime)),
         ("temperatureWIMDA"  ,mdls["WIMDA_airTemperature_" + sensorName +"_MDL"].predict(np.array(input).reshape(1,-1))[0][0]),
