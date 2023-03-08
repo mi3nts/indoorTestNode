@@ -131,7 +131,7 @@ if __name__ == "__main__":
 
     for target in climateTargets:
         for climateSensor in climateSensors:
-            mdls[target + "_MDL" ] = pd.read_pickle((modelsPklsFolder,nodeID,target+"_MDL_"+climateSensor,"pkl"))
+            mdls[target + "_MDL" ] = pd.read_pickle(  mP.getPathGeneric(modelsPklsFolder,nodeID,target+"_MDL_"+climateSensor,"pkl"))
 
 
     print(mdls)
