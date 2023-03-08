@@ -132,11 +132,11 @@ if __name__ == "__main__":
     for dev in canareePorts:
         print("\t{0}".format(dev))
 
-    mdls = []
+    mdls = {}
 
     for target in climateTargets:
         for climateSensor in climateSensors:
-            mdls[target + "_MDL" ] = pd.read_pickle(getPathGeneric(modelsPklsFolder,nodeID,target+"_MDL_"+climateSensor,"pkl"))
+            mdls[target + "_MDL"] = pd.read_pickle(getPathGeneric(modelsPklsFolder,nodeID,target+"_MDL_"+climateSensor,"pkl"))
 
 
     print(mdls)
