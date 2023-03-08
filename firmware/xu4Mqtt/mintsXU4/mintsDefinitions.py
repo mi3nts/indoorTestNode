@@ -2,7 +2,7 @@
 from getmac import get_mac_address
 import serial.tools.list_ports
 import pandas as pd
-from mintsXU4 import mintsProcessing as mP
+import mintsProcessing as mP
 
 # Added March 1sr 2023: for ports with same names and PID 
 
