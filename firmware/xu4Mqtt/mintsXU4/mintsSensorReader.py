@@ -52,13 +52,12 @@ def sensorFinisher(dateTime,sensorName,sensorDictionary):
     if(latestOn):
        mL.writeJSONLatest(sensorDictionary,sensorName)
     if(mqttOn):
-       mL.writeMQTTLatest(sensorDictionary,sensorName)   
+       mL.writeMQTTLatest(sensorDictionary,sensorName)  
+
     if sensorName in climateSensors:
         sensorFinisherCalibrated(dateTime,sensorName,sensorDictionary)
 
     print("-----------------------------------")
-    print(sensorName)
-    print(sensorDictionary)
 
 # At this point if the sensor name is a climate sensor 
 
