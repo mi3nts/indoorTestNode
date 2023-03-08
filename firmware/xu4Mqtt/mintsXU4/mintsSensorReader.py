@@ -53,6 +53,8 @@ def sensorFinisher(dateTime,sensorName,sensorDictionary):
        mL.writeJSONLatest(sensorDictionary,sensorName)
     if(mqttOn):
        mL.writeMQTTLatest(sensorDictionary,sensorName)   
+    
+    sensorFinisherCalibrated(dateTime,sensorName,sensorDictionary)
 
     print("-----------------------------------")
     print(sensorName)
