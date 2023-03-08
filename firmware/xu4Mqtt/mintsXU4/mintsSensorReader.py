@@ -53,27 +53,32 @@ def sensorFinisher(dateTime,sensorName,sensorDictionary):
        mL.writeJSONLatest(sensorDictionary,sensorName)
     if(mqttOn):
        mL.writeMQTTLatest(sensorDictionary,sensorName)   
-    
-    sensorFinisherCalibrated(dateTime,sensorName,sensorDictionary)
+    if sensorName in climateSensors:
+        sensorFinisherCalibrated(dateTime,sensorName,sensorDictionary)
 
-    # print("-----------------------------------")
-    # print(sensorName)
-    # print(sensorDictionary)
+    print("-----------------------------------")
+    print(sensorName)
+    print(sensorDictionary)
 
 # At this point if the sensor name is a climate sensor 
 
 def sensorFinisherCalibrated(dateTime,sensorName,sensorDictionary):
     print("Calibrating sensor data")
     sensorNamePost = sensorName + "CC"
-    if sensorName == "BME280": 
-        print("BME280 calibrating")
+    if sensorName == "BME280" or sensorName == "BME680": 
         input = [sensorDictionary["temperature"],sensorDictionary["pressure"],sensorDictionary["humidity"]]
-        print(input)
-        sensorDictionary["temperatureWIMDA"] = mdls["WIMDA_airTemperature_" + sensorName +"_MDL"].predict(np.array(input).reshape(1,-1))[0][0]
-        sensorDictionary["pressureWIMDA"]    = mdls["WIMDA_barrometricPressureBars_" + sensorName +"_MDL"].predict(np.array(input).reshape(1,-1))[0][0]
-        sensorDictionary["humidityWIMDA"]    = mdls["WIMDA_relativeHumidity_" + sensorName +"_MDL"].predict(np.array(input).reshape(1,-1))[0][0]
-        sensorDictionary["dewPointWIMDA"]    = mdls["WIMDA_dewPoint_" + sensorName +"_MDL"].predict(np.array(input).reshape(1,-1))[0][0]
-        sensorDictionary["pressureYXXDR"]    = mdls["YXXDR_barrometricPressureBars_" + sensorName +"_MDL"].predict(np.array(input).reshape(1,-1))[0][0]
+    if sensorName == "SCD30": 
+        input = [sensorDictionary["temperature"],sensorDictionary["humidity"]]
+
+    sensorDictionary = OrderedDict([
+        ("dateTime"          ,str(dateTime)),
+        ("temperatureWIMDA"  ,mdls["WIMDA_airTemperature_" + sensorName +"_MDL"].predict(np.array(input).reshape(1,-1))[0][0]),
+        ("eventAccumulation" ,mdls["WIMDA_barrometricPressureBars_" + sensorName +"_MDL"].predict(np.array(input).reshape(1,-1))[0][0]),
+        ("totalAccumulation" ,mdls["WIMDA_relativeHumidity_" + sensorName +"_MDL"].predict(np.array(input).reshape(1,-1))[0][0]),
+        ("rainPerInterval"   ,mdls["WIMDA_dewPoint_" + sensorName +"_MDL"].predict(np.array(input).reshape(1,-1))[0][0])
+        ("rainPerInterval"   ,mdls["YXXDR_barrometricPressureBars_" + sensorName +"_MDL"].predict(np.array(input).reshape(1,-1))[0][0])    	    
+             ])
+
 
     print(sensorDictionary)
 
