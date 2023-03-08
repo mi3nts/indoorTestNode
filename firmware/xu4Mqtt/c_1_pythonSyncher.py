@@ -9,9 +9,6 @@ print()
 print("MINTS")
 print()
 
-yamlFile =  str(sys.argv[1])
-print("YAML File: " + yamlFile)
-print()
 
 from mintsXU4 import mintsSensorReader as mSR
 from mintsXU4 import mintsDefinitions  as mD
