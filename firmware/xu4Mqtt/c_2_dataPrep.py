@@ -19,10 +19,7 @@ airMarID             = mD.airMarID
 rawPklsFolder        = mD.rawPklsFolder
 referencePklsFolder  = mD.referencePklsFolder
 mergedPklsFolder     = mD.mergedPklsFolder
-
-## For Testing Purposes
-# BME280  = mP.superReader("001e06323a06","BME280");
-# print(BME280)
+climateSensors       = mD.climateSensors
 
 YXXDR     = mP.superReader(airMarID,"YXXDR")
 pd.to_pickle(YXXDR ,mP.getPathGeneric(referencePklsFolder,airMarID,"YXXDR","pkl") )
@@ -34,8 +31,6 @@ WIMDA  = pd.read_pickle(mP.getPathGeneric(referencePklsFolder,airMarID,"WIMDA","
 YXXDR  = pd.read_pickle(mP.getPathGeneric(referencePklsFolder,airMarID,"YXXDR","pkl"))
 
 print("--------------")
-
-climateSensors = ["BME280","BME680","SCD30"]
 
 for climateSensor in climateSensors:
     print("=====================MINTS=====================")

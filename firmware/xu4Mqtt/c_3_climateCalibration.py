@@ -19,30 +19,29 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score
 from sklearn.metrics import mean_squared_error
 
-nodeIDs              = mD.mintsDefinitions['nodeIDs']
-airMarID             = mD.mintsDefinitions['airmarID']
-climateTargets       = mD.mintsDefinitions['climateTargets']
+nodeID               = mD.nodeID
+airMarID             = mD.airMarID
+climateTargets       = mD.climateTargets
 rawPklsFolder        = mD.rawPklsFolder
 referencePklsFolder  = mD.referencePklsFolder
 mergedPklsFolder     = mD.mergedPklsFolder
 modelsPklsFolder     = mD.modelsPklsFolder
+climateSensors       = mD.climateSensors
 
 dateNow = datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
 print("Current Time:",dateNow)
 
-for nodeData in nodeIDs:
+for climateSensor in climateSensors:
     print(" ")
     print("=====================MINTS=====================")
-    nodeID              = nodeData['nodeID']
-    climateSensor       = nodeData['climateSensor']
-    sensorDate          = nodeData['climateSensorBegin']
     print("Climate data Calibration for Node: " + nodeID +" with Climate Sensor: " + climateSensor)
-    print("running from: " + sensorDate)
     print("-----------------------------------------------")
     try:
-        mintsData = pd.read_pickle(mP.getPathGeneric(mergedPklsFolder,nodeID,"climateDataWSTCCurrent","pkl"))
-        mintsData = mP.oobClimateCheck(mintsData,nodeID,climateSensor,dateNow,modelsPklsFolder,sensorDate)
-        mP.climateCalibration(nodeID,dateNow, mintsData,climateTargets,climateSensor,sensorDate)
+        mintsData = pd.read_pickle(mP.getPathGeneric(mergedPklsFolder,nodeID,climateSensor,"pkl"))
+
+    #     mintsData = mP.oobClimateCheck(mintsData,nodeID,climateSensor,dateNow,modelsPklsFolder,sensorDate)
+    #     mP.climateCalibration(nodeID,dateNow, mintsData,climateTargets,climateSensor,sensorDate)
+
     except Exception as e:
         print("[ERROR] Could not publish data, error: {}".format(e))
     
