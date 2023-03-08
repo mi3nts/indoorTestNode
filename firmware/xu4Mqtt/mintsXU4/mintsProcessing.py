@@ -351,11 +351,11 @@ def climateCalibrationV2(nodeID,dateNow, mintsData,climateTargets,climateSensor)
     print("Climate data calibraion for Node: " + nodeID +" with Climate Sensor: " + climateSensor)
     print("-----------------------------------------------")
     if climateSensor == "BME280":
-            inputData  = mintsData['BME280_temperature','BME280_pressure','BME280_humidity']
+            inputData  = mintsData[['BME280_temperature','BME280_pressure','BME280_humidity']]
     if climateSensor == "BME680":
-            inputData  = mintsData['BME680_temperature','BME680_pressure','BME680_humidity']
+            inputData  = mintsData[['BME680_temperature','BME680_pressure','BME680_humidity']]
     if climateSensor == "SCD30":
-            inputData  = mintsData['SCD30_temperature','SCD30_humidity']
+            inputData  = mintsData[['SCD30_temperature','SCD30_humidity']]
 
     
     
