@@ -34,11 +34,12 @@ WIMDA  = pd.read_pickle(mP.getPathGeneric(referencePklsFolder,airMarID,"WIMDA","
 YXXDR  = pd.read_pickle(mP.getPathGeneric(referencePklsFolder,airMarID,"YXXDR","pkl"))
 
 print("--------------")
+
 climateSensors = ["BME280","BME680","SCD30"]
 
 for climateSensor in climateSensors:
     print("=====================MINTS=====================")
     print("Prepearing Climate data for Node: " + nodeID +" with Climate Sensor: " + climateSensor)
     print("-----------------------------------------------")
-    mP.climateDataPrep(nodeID,climateSensor,WIMDA,YXXDR,mergedPklsFolder)
+    mP.climateDataPrepV2(nodeID,climateSensor,WIMDA,YXXDR,mergedPklsFolder)
 
