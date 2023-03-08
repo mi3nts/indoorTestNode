@@ -68,20 +68,26 @@ mqttOn                  = mD.mqttOn
 
 def superReader(nodeID,sensorID):
     if sensorID == "BME280":
-        floatSum = 4
+        floatSum  = 4
+        floatSum2 = -1         
     elif sensorID == "BME680":
-        floatSum = 4
+        floatSum  = 4
+        floatSum2 = -1         
     elif sensorID == "GPSGPGGA2":
-        floatSum = 9   
+        floatSum  = 9   
+        floatSum2 = -1        
     elif sensorID == "SCD30":
-        floatSum = 4       
+        floatSum  = 4       
+        floatSum2 = -1 
     elif sensorID == "WIMDA":
-        floatSum = 12       
+        floatSum  = 12   
+        floatSum2 = 16
     elif sensorID == "YXXDR":
-        floatSum = 4             
+        floatSum  = 4  
+        floatSum2 = -1                      
     else: 
         return []
-    dataIn = sensorReader(nodeID,sensorID,floatSum)
+    dataIn = sensorReaderV2(nodeID,sensorID,floatSum,floatSum2)
     if(len(dataIn))>0:
         dataIn = sensorReaderPost(dataIn,sensorID)
         return dataIn;
@@ -144,6 +150,43 @@ def sensorReader(nodeID,sensorID,floatSum):
         except Exception as e:
             print("[ERROR] Could not publish data, error: {}".format(e))
     return pd.concat(dataIn)
+
+
+def sensorReaderV2(nodeID,sensorID,floatSum1,floatSum2):
+    print("Reading " + sensorID + " data from node " + nodeID )
+    dataInPre = glob.glob(dataFolder+ "/*/*"+nodeID+"/*/*/*/*"+sensorID+ "*.csv")
+    dataInPre.sort()
+    dataIn = []
+
+    for f in dataInPre:
+        try:
+            print("Reading " + f)
+            dataFrame = pd.read_csv(f)
+            #print(dataFrame.dtypes)
+            floatSumNow = sum(dataFrame.dtypes == float64 )
+
+            if(floatSum1 == floatSumNow):
+                dataNow = pd.read_csv(f)
+                dataNow['dateTime'] = pd.to_datetime(dataNow['dateTime'])
+
+                dataNow  = dataNow[sensorDefinitions(sensorID)]
+                dataNow =dataNow.set_index('dateTime').resample('30S').mean()
+                # print(dataNow)
+                dataIn.append(dataNow)            
+            print(floatSum2)
+            if(floatSum2 == floatSumNow):
+                dataNow = pd.read_csv(f)
+                dataNow['dateTime'] = pd.to_datetime(dataNow['dateTime'])
+
+                dataNow  = dataNow[sensorDefinitions(sensorID)]
+                dataNow =dataNow.set_index('dateTime').resample('30S').mean()
+                # print(dataNow)
+                dataIn.append(dataNow)
+        except Exception as e:
+            print("[ERROR] Could not publish data, error: {}".format(e))
+    return pd.concat(dataIn)
+
+
 
 def sensorReaderPost(dataIn,sensorID):
     #dataIn.index = pd.to_datetime(dataIn.dateTime)
