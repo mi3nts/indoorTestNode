@@ -360,7 +360,7 @@ def climateCalibrationV2(nodeID,dateNow, mintsData,climateTargets,climateSensor)
     
     
     for target in climateTargets:
-        targetData = mintsData[target]
+        targetData = mintsData[[target]]
         print("-------=========-------")
         print(target)
         print(targetData)
