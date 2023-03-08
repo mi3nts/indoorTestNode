@@ -56,9 +56,9 @@ def sensorFinisher(dateTime,sensorName,sensorDictionary):
     
     sensorFinisherCalibrated(dateTime,sensorName,sensorDictionary)
 
-    print("-----------------------------------")
-    print(sensorName)
-    print(sensorDictionary)
+    # print("-----------------------------------")
+    # print(sensorName)
+    # print(sensorDictionary)
 
 # At this point if the sensor name is a climate sensor 
 
@@ -66,6 +66,7 @@ def sensorFinisherCalibrated(dateTime,sensorName,sensorDictionary):
     print("Calibrating sensor data")
     sensorNamePost = sensorName + "CC"
     if sensorName == "BME280": 
+        print("BME280 calibrating")
         input = [sensorDictionary["temperature"],sensorDictionary["pressure"],sensorDictionary["humidity"]]
         print(input)
     #     sensorDictionary["temperatureWIMDA"] = mdls["WIMDA_airTemperature_" + sensorName +"_MDL"].predict(input)
