@@ -18,6 +18,7 @@ from sklearn.linear_model import LinearRegression
 #import matplotlib.pyplot as plt
 from sklearn.metrics import r2_score
 from sklearn.metrics import mean_squared_error
+from mintsXU4 import mintsProcessing as mP
 
 nodeID               = mD.nodeID
 airMarID             = mD.airMarID

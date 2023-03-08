@@ -1,6 +1,8 @@
 
 from getmac import get_mac_address
 import serial.tools.list_ports
+import pandas as pd
+from mintsXU4 import mintsProcessing as mP
 
 # Added March 1sr 2023: for ports with same names and PID 
 
@@ -112,7 +114,6 @@ if __name__ == "__main__":
     print("MQTT Credentials File      : {0}".format(mqttCredentialsFile))
     print("MQTT Broker and Port       : {0}, {1}".format(mqttOn,mqttPort))
 
-
     #-------------------------------------------#
     print("RG15 Ports:")
     for dev in rg15Ports:
@@ -125,3 +126,8 @@ if __name__ == "__main__":
     print("Canaree Ports:")
     for dev in canareePorts:
         print("\t{0}".format(dev))
+
+    mdls = []
+
+    for climateSensor in climateSensors:
+        # mdls[target + "_MDL" ] = pd.read_pickle(mP.getPathGeneric(mergedPklsFolder,nodeID,climateSensor,"pkl"))
