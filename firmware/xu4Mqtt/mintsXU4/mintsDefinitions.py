@@ -93,7 +93,8 @@ canareePorts          = findPortV2("Canaree PM",10)
 
 ipsPorts              = ["/dev/ttyS1"]
 climateSensors        = ["BME280","BME680","SCD30"]
-climateTargets        = ["WIMDA_relativeHumidity","YXXDR_barrometricPressureBars"]
+climateTargets        = ["WIMDA_airTemperature","WIMDA_barrometricPressureBars","WIMDA_relativeHumidity","WIMDA_dewPoint","YXXDR_barrometricPressureBars"]
+
 # For MQTT 
 mqttOn                = True
 mqttCredentialsFile   = 'mintsXU4/credentials.yml'
