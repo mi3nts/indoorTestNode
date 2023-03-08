@@ -164,6 +164,7 @@ def sensorReaderV2(nodeID,sensorID,floatSum1,floatSum2):
             dataFrame = pd.read_csv(f)
             #print(dataFrame.dtypes)
             floatSumNow = sum(dataFrame.dtypes == float64 )
+            print(floatSumNow)  
 
             if(floatSum1 == floatSumNow):
                 dataNow = pd.read_csv(f)
@@ -173,7 +174,7 @@ def sensorReaderV2(nodeID,sensorID,floatSum1,floatSum2):
                 dataNow =dataNow.set_index('dateTime').resample('30S').mean()
                 # print(dataNow)
                 dataIn.append(dataNow)            
-            print(floatSum2)
+        
             if(floatSum2 == floatSumNow):
                 dataNow = pd.read_csv(f)
                 dataNow['dateTime'] = pd.to_datetime(dataNow['dateTime'])
