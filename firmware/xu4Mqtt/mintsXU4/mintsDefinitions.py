@@ -68,6 +68,7 @@ dataFolderMQTT            = "/home/teamlary/mintsData/rawMQTT"
 
 macAddress            = findMacAddress()
 nodeID                = macAddress
+airMarID              = "001e0610c0e4"
 
 latestDisplayOn       = False
 latestOn              = False
