@@ -77,7 +77,7 @@ rawPklsFolder             = dataFolderPre + "/rawPkls"
 referencePklsFolder       = dataFolderPre + "/referencePkls"
 mergedPklsFolder          = dataFolderPre + "/mergedPkls"
 modelsPklsFolder          = dataFolderPre + "/modelsPkls"
-climateCalibratedFolder   = dataFolderPre + "/climateCalibrated"
+dataFolderCC              = dataFolderPre + "/climateCalibrated"
 
 liveFolder                = dataFolderPre + "/liveUpdate/results"
 
