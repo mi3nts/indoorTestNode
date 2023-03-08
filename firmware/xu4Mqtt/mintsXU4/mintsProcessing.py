@@ -351,34 +351,34 @@ def climateCalibrationV2(nodeID,dateNow, mintsData,climateTargets,climateSensor)
     for target in climateTargets:
         targetData = mintsData[[target]]
         if climateSensor == "BME280":
-            if "Temperature" in target:
-                inputData  = mintsData[['BME280_temperature']]
-            if "Pressure" in target:
-                inputData  = mintsData[['BME280_pressure']]                
-            if "Humidity" in target:
-                inputData  = mintsData[['BME280_humidity']]
-            if "dewPoint" in target:
-                inputData  = mintsData[['BME280_temperature','BME280_pressure','BME280_humidity']]
+            # if "Temperature" in target:
+            #     inputData  = mintsData[['BME280_temperature']]
+            # if "Pressure" in target:
+            #     inputData  = mintsData[['BME280_pressure']]                
+            # if "Humidity" in target:
+            #     inputData  = mintsData[['BME280_humidity']]
+            # if "dewPoint" in target:
+            inputData  = mintsData[['BME280_temperature','BME280_pressure','BME280_humidity']]
 
         if climateSensor == "BME680":
-            if "Temperature" in target:
-                inputData  = mintsData[['BME680_temperature']]
-            if "Pressure" in target:
-                inputData  = mintsData[['BME680_pressure']]
-            if "Humidity" in target:
-                inputData  = mintsData[['BME680_humidity']]
-            if "dewPoint" in target:
-                inputData  = mintsData[['BME680_temperature','BME680_pressure','BME680_humidity']]
+            # if "Temperature" in target:
+            #     inputData  = mintsData[['BME680_temperature']]
+            # if "Pressure" in target:
+            #     inputData  = mintsData[['BME680_pressure']]
+            # if "Humidity" in target:
+            #     inputData  = mintsData[['BME680_humidity']]
+            # if "dewPoint" in target:
+            inputData  = mintsData[['BME680_temperature','BME680_pressure','BME680_humidity']]
             
         if climateSensor == "SCD30":
-            if "Temperature" in target:
-                inputData  = mintsData[['SCD30_temperature']]
-            if "Pressure" in target:
-                inputData  = mintsData[['SCD30_temperature','SCD30_humidity']]
-            if "Humidity" in target:
-                inputData  = mintsData[['SCD30_humidity']]
-            if "dewPoint" in target:
-                inputData  = mintsData[['SCD30_temperature','SCD30_humidity']]
+            # if "Temperature" in target:
+            #     inputData  = mintsData[['SCD30_temperature']]
+            # if "Pressure" in target:
+            #     inputData  = mintsData[['SCD30_temperature','SCD30_humidity']]
+            # if "Humidity" in target:
+            #     inputData  = mintsData[['SCD30_humidity']]
+            # if "dewPoint" in target:
+            inputData  = mintsData[['SCD30_temperature','SCD30_humidity']]
     
         print("-------=========-------")
         print("=====================MINTS=====================")
