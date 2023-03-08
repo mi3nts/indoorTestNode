@@ -71,16 +71,16 @@ def superReader(nodeID,sensorID):
             
     if sensorID == "BME280":
         floatSum = 4
-    if sensorID == "BME680":
+    elif sensorID == "BME680":
         floatSum = 4
-    if sensorID == "GPSGPGGA2":
+    elif sensorID == "GPSGPGGA2":
         floatSum = 9   
-    if sensorID == "SCD30":
+    elif sensorID == "SCD30":
         floatSum = 4       
-    if sensorID == "WIMDA":
+    elif sensorID == "WIMDA":
         print("Test 3")
         floatSum = 12       
-    if sensorID == "YXXDR":
+    elif sensorID == "YXXDR":
         floatSum = 4             
     else: 
         return []
