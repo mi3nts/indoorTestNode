@@ -1,0 +1,38 @@
+
+#!/usr/bin/python
+
+import sys
+import yaml
+import os
+
+print()
+print("MINTS")
+print()
+
+yamlFile =  str(sys.argv[1])
+print("YAML File: " + yamlFile)
+print()
+
+from mintsXU4 import mintsSensorReader as mSR
+from mintsXU4 import mintsDefinitions  as mD
+
+nodeID         = mD.nodeID
+dataFolder     = mD.dataFolder
+
+airMarID       = mD.airMarID
+dataFolderRef  = dataFolder+ "/reference/"
+dataFolderRaw  = dataFolder+ "/raw/"
+
+
+print("Data Folder: " + dataFolder)
+print("Data Folder Raw: " + dataFolderRaw)
+print("Data Folder Ref: " + dataFolderRef)
+
+sysStr = 'rsync -avzrtu -e "ssh" ' +  "--include='*.csv' --include='*/' --exclude='*' mints@10.247.238.16:Downloads/reference/" + airMarID + " " + dataFolderRef
+print(sysStr)
+# os.system(sysStr)
+
+print("Syncing data for Node: "+ nodeID)
+sysStr = 'rsync -avzrtu -e "ssh" ' +  "--include='*.csv' --include='*/' --exclude='*' mints@10.247.238.16:raw/" + nodeID + " " + dataFolderRaw
+print(sysStr)
+# os.system(sysStr)

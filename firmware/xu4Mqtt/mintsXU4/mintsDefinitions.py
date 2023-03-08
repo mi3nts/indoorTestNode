@@ -67,6 +67,7 @@ dataFolderMQTT            = "/home/teamlary/mintsData/rawMQTT"
 
 
 macAddress            = findMacAddress()
+nodeID                = macAddress
 
 latestDisplayOn       = False
 latestOn              = False
