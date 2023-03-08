@@ -354,14 +354,14 @@ def climateCalibrationV2(nodeID,dateNow, mintsData,climateTargets,climateSensor)
         # target = targets['target']
         print(target)
 
-        targetData = mintsData[target]
-        print("Running calibraion for : " + target )
-        if climateSensor == "BME280":
-            inputData  = mintsData[targets['BME280inputs']]
-        if climateSensor == "BME680":
-            inputData  = mintsData[targets['BME680inputs']]        
+        # targetData = mintsData[target]
+        # print("Running calibraion for : " + target )
+        # if climateSensor == "BME280":
+        #     inputData  = mintsData[targets['BME280inputs']]
+        # if climateSensor == "BME680":
+        #     inputData  = mintsData[targets['BME680inputs']]        
 
-        print(inputData)
+        # print(inputData)
         # x_train, x_test, y_train, y_test = train_test_split(inputData, targetData, test_size=0.2, random_state=0)
         
         # regressor = LinearRegression()
