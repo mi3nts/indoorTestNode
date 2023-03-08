@@ -362,45 +362,41 @@ def climateCalibrationV2(nodeID,dateNow, mintsData,climateTargets,climateSensor)
     for target in climateTargets:
         targetData = mintsData[[target]]
         print("-------=========-------")
-        print(target)
-        print(targetData)
-        print(inputData)
-        # print("Running calibraion for : " + target )
+        print("Running calibraion for : " + target )
         
-        # print(inputData)
-        # x_train, x_test, y_train, y_test = train_test_split(inputData, targetData, test_size=0.2, random_state=0)
+        x_train, x_test, y_train, y_test = train_test_split(inputData, targetData, test_size=0.2, random_state=0)
         
-        # regressor = LinearRegression()
-        # regressor.fit(x_train, y_train)
+        regressor = LinearRegression()
+        regressor.fit(x_train, y_train)
    
-        # y_predicted_train = regressor.predict(x_train)
-        # y_predicted_test  = regressor.predict(x_test)
+        y_predicted_train = regressor.predict(x_train)
+        y_predicted_test  = regressor.predict(x_test)
         
-        # rmseTrain  = mean_squared_error(y_train, y_predicted_train, squared=False)
-        # rmseTest   = mean_squared_error(y_test, y_predicted_test, squared=False)
+        rmseTrain  = mean_squared_error(y_train, y_predicted_train, squared=False)
+        rmseTest   = mean_squared_error(y_test, y_predicted_test, squared=False)
 
-        # r2Test   = r2_score(y_test, y_predicted_test)
-        # r2Train  = r2_score(y_train, y_predicted_train)
+        r2Test   = r2_score(y_test, y_predicted_test)
+        r2Train  = r2_score(y_train, y_predicted_train)
 
-        # statsDictionary = OrderedDict([
-        #         ("nodeID"            ,nodeID),
-        #         ("target"            ,target),                
-        #         ("climateSensor"     ,climateSensor),
-        #         ("numCombined"       ,len(mintsData)),
-        #         ("numTrain"          ,len(y_train)),
-        #         ("numTest"           ,len(y_train)),
-        #         ("rmseTrain"         ,rmseTrain),
-        #         ("rmseTest"          ,rmseTest),
-        #         ("r2Train"           ,r2Train),
-        #         ("r2Test"            ,r2Test),
-        #         ("sensorDate"        ,sensorDate),
-        #         ("dateNow"           ,dateNow)
-        #        ])
+        statsDictionary = OrderedDict([
+                ("nodeID"            ,nodeID),
+                ("target"            ,target),                
+                ("climateSensor"     ,climateSensor),
+                ("numCombined"       ,len(mintsData)),
+                ("numTrain"          ,len(y_train)),
+                ("numTest"           ,len(y_train)),
+                ("rmseTrain"         ,rmseTrain),
+                ("rmseTest"          ,rmseTest),
+                ("r2Train"           ,r2Train),
+                ("r2Test"            ,r2Test),
+                ("sensorDate"        ,sensorDate),
+                ("dateNow"           ,dateNow)
+               ])
    
-        # pd.to_pickle(regressor ,getPathGeneric(modelsPklsFolder,nodeID,target+"_MDL_"+dateNow,"pkl")  )
+        pd.to_pickle(regressor ,getPathGeneric(modelsPklsFolder,nodeID,target+"_MDL_"+dateNow,"pkl")  )
 
-        # writePath = getPathGenericParent(modelsPklsFolder,"climateCalibStats","csv")       
-        # writeCSV3(writePath,statsDictionary)
+        writePath = getPathGenericParent(modelsPklsFolder,"climateCalibStats","csv")       
+        writeCSV3(writePath,statsDictionary)
   
 
 
