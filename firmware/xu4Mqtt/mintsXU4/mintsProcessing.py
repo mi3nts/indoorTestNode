@@ -271,7 +271,7 @@ def climateDataPrepV2(nodeID,climateSensor,WIMDA,YXXDR,mergedPklsFolder):
     print("Reading Data for Node: " + nodeID)
     climateSensor   = superReader(nodeID,climateSensor)
     mintsData = merger([climateSensor, WIMDA,YXXDR])
-    pd.to_pickle(mintsData,getPathGeneric(mergedPklsFolder,nodeID,str(climateSensor)+"_climate_data","pkl") )
+    pd.to_pickle(mintsData,getPathGeneric(mergedPklsFolder,nodeID,climateSensor,"pkl") )
     print(mintsData)
 
     
