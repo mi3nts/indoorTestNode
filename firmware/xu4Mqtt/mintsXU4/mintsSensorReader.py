@@ -81,9 +81,8 @@ def sensorFinisherCalibrated(dateTime,sensorName,sensorDictionary):
     sensorName = sensorName + "CC"
     writePath = getWritePathCC(sensorName,dateTime)
     exists = directoryCheck(writePath)
-    print(writePath)
     writeCSV2(writePath,sensorDictionary,exists)
-    print(writePath)    
+
     if(latestOn):
         mL.writeJSONLatest(sensorDictionary,sensorName)
     if(mqttOn):
