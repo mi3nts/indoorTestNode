@@ -65,9 +65,9 @@ def sensorFinisher(dateTime,sensorName,sensorDictionary):
 def sensorFinisherCalibrated(dateTime,sensorName,sensorDictionary):
   
     sensorNamePost = sensorName + "CC"
-    # if sensorName == "BME280" or sensorName == "BME680" or sensorName == "SCD30": 
-    #      input = [sensorDictionary["temperature"],sensorDictionary["pressure"],sensorDictionary["humidity"]]
-    #      sensorDictionary["temperatureWIMDA"] = mdls["WIMDA_airTemperature_" + sensorName +"_MDL"].predict(input)
+    if sensorName == "BME280" or sensorName == "BME680" or sensorName == "SCD30": 
+         input = [sensorDictionary["temperature"],sensorDictionary["pressure"],sensorDictionary["humidity"]]
+    #     sensorDictionary["temperatureWIMDA"] = mdls["WIMDA_airTemperature_" + sensorName +"_MDL"].predict(input)
     #      sensorDictionary["pressureWIMDA"]    = mdls["WIMDA_barrometricPressureBars_" + sensorName +"_MDL"].predict(input)
     #      sensorDictionary["humidityWIMDA"]    = mdls["WIMDA_relativeHumidity_" + sensorName +"_MDL"].predict(input)
     #      sensorDictionary["dewPointWIMDA"]    = mdls["WIMDA_dewPoint_" + sensorName +"_MDL"].predict(input)
