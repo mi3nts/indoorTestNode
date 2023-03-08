@@ -26,6 +26,7 @@ mergedPklsFolder     = mD.mergedPklsFolder
 
 # YXXDR     = mP.superReader(airMarID,"YXXDR")
 # pd.to_pickle(YXXDR ,mP.getPathGeneric(referencePklsFolder,airMarID,"YXXDR","pkl") )
+
 print("Test 1")
 WIMDA     = mP.superReader(airMarID,"WIMDA")
 pd.to_pickle(WIMDA ,mP.getPathGeneric(referencePklsFolder,airMarID,"WIMDA","pkl") )

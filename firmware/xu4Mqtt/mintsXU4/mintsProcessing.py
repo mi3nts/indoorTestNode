@@ -81,7 +81,7 @@ def superReader(nodeID,sensorID):
         floatSum = 4             
     else: 
         return []
-        
+    print("TEST 2")
     dataIn = sensorReader(nodeID,sensorID,floatSum)
     if(len(dataIn))>0:
         dataIn = sensorReaderPost(dataIn,sensorID)
