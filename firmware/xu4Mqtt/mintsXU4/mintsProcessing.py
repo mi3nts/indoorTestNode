@@ -379,7 +379,7 @@ def climateCalibrationV2(nodeID,dateNow, mintsData,climateTargets,climateSensor)
             if "Humidity" in target:
                 inputData  = mintsData[['SCD30_humidity']]
             if "dewPoint" in target:
-                inputData  = mintsData[['SCD30_temperature']]
+                inputData  = mintsData[['SCD30_temperature','SCD30_humidity']]
     
         print("-------=========-------")
         print("=====================MINTS=====================")
