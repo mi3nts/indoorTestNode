@@ -28,8 +28,3 @@ print("Data Folder Ref: " + dataFolderRef)
 sysStr = 'rsync -avzrtu -e "ssh" ' +  "--include='*2023_03_*.csv' --include='*/' --exclude='*' mints@10.247.238.16:Downloads/reference/" + airMarID + " " + dataFolderRef
 print(sysStr)
 os.system(sysStr)
-
-print("Syncing data for Node: "+ nodeID)
-sysStr = 'rsync -avzrtu -e "ssh" ' +  "--include='*.csv' --include='*/' --exclude='*' mints@10.247.238.16:raw/" + nodeID + " " + dataFolderRaw
-print(sysStr)
-# os.system(sysStr)
