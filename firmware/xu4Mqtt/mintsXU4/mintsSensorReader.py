@@ -41,7 +41,7 @@ latestOn                 = mD.latestOn
 mqttOn                   = mD.mqttOn
 climateSensors           = mD.climateSensors
 mdls                     = mD.mdls
-dataFolderCC             = mD.climateCalibratedFolder
+dataFolderCC             = mD.dataFolderCC
 
 def sensorFinisher(dateTime,sensorName,sensorDictionary):
     #Getting Write Path
