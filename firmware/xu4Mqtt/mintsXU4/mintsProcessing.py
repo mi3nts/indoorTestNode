@@ -350,8 +350,8 @@ def climateCalibrationV2(nodeID,dateNow, mintsData,climateTargets,climateSensor)
     print("=====================MINTS=====================")
     print("Climate data calibraion for Node: " + nodeID +" with Climate Sensor: " + climateSensor)
     print("-----------------------------------------------")
-    for targets in climateTargets:
-        target = targets['target']
+    for target in climateTargets:
+        # target = targets['target']
         print(target)
 
         targetData = mintsData[target]
