@@ -229,6 +229,15 @@ def oobClimateCheck(mintsData,nodeID,climateSensor,dateNow,modelsPklsFolder,sens
     return mintsData;
 
 
+
+def climateDataPrepV2(nodeID,climateSensor,WIMDA,YXXDR,mergedPklsFolder):
+    print("Reading Data for Node: " + nodeID)
+    climateSensor   = superReader(nodeID,climateSensor)
+    mintsData = merger([climateSensor, WIMDA,YXXDR])
+    pd.to_pickle(mintsData,getPathGeneric(mergedPklsFolder,nodeID,"climateData","pkl") )
+    print(mintsData)
+
+    
 def climateDataPrep(nodeData,nodeID,climateSensor,WIMDA,YXXDR,mergedPklsFolder):
     dataCropDate  = datetime.datetime.strptime(nodeData['climateSensorBegin'], '%Y-%m-%d')
     print("Reading Data for Node: " + nodeID)

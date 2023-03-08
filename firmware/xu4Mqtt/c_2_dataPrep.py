@@ -41,5 +41,5 @@ for climateSensor in climateSensors:
     print("=====================MINTS=====================")
     print("Prepearing Climate data for Node: " + nodeID +" with Climate Sensor: " + climateSensor)
     print("-----------------------------------------------")
-    mP.climateDataPrep(nodeData,nodeID,climateSensor,WIMDA,YXXDR,mergedPklsFolder)
+    mP.climateDataPrep(nodeID,climateSensor,WIMDA,YXXDR,mergedPklsFolder)
 
