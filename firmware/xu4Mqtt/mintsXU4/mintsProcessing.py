@@ -347,9 +347,6 @@ def climateCalibration(nodeID,dateNow, mintsData,climateTargets,climateSensor,se
   
 
 def climateCalibrationV2(nodeID,dateNow, mintsData,climateTargets,climateSensor):
-    print("=====================MINTS=====================")
-    print("Climate data calibraion for Node: " + nodeID +" with Climate Sensor: " + climateSensor)
-    print("-----------------------------------------------")
     if climateSensor == "BME280":
             inputData  = mintsData[['BME280_temperature','BME280_pressure','BME280_humidity']]
     if climateSensor == "BME680":
@@ -360,6 +357,9 @@ def climateCalibrationV2(nodeID,dateNow, mintsData,climateTargets,climateSensor)
     for target in climateTargets:
         targetData = mintsData[[target]]
         print("-------=========-------")
+        print("=====================MINTS=====================")
+        print("Climate data calibraion for Node: " + nodeID +" with Climate Sensor: " + climateSensor)
+        print("-----------------------------------------------")
         print("Running calibraion for : " + target )
       
         x_train, x_test, y_train, y_test = train_test_split(inputData, targetData, test_size=0.2, random_state=0)
