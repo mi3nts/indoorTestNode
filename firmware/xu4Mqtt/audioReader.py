@@ -32,7 +32,7 @@ minConfidence      = .3
 numOfThreads       = 4
 
 dataFolder         = mD.dataFolder
-
+saveConfidence     = .75
 
 currentIndex = 0 
 
@@ -53,13 +53,24 @@ def main(cfg,currentIndex):
             soundClassData["Labels"] = soundClassData["Scientific name"].map(labels.set_index("Scientific name")["Labels"])
             print(soundClassData)
             for index, row in soundClassData.iterrows():
+                dateTimeIn = str(dateTime + datetime.timedelta(seconds = row['Start (s)']))
+                birdName     = row['Labels']
+                confidence = row['Confidence']
+
                 sensorDictionary = OrderedDict([
-                    ("dateTime"     ,str(dateTime + datetime.timedelta(seconds = row['Start (s)']))),
-                    ("label"        ,row['Labels']),
-                    ("confidence"   ,row['Confidence'])
+                    ("dateTime"     ,dateTimeIn),
+                    ("label"        ,birdName),
+                    ("confidence"   ,confidence)
                      ])
+                
                 mSR.sensorFinisher(dateTime,"MBC001",sensorDictionary)
-      
+                
+                if row['Confidence'] > saveConfidence:
+                    audio_segments = np.array_split(recording, 3)
+                    writePathAudio = mSR.getWritePathAudio("MBC001",birdName,confidence,dateTime)
+                    mSR.directoryCheck(writePathAudio)
+                    write(writePathAudio, sampleRate, audio_segments[index])  # Save as WAV file
+
             print("=============")
             print()
 
@@ -67,6 +78,8 @@ def main(cfg,currentIndex):
             print ("Error: %s - %s." % (e.filename, e.strerror))
             print("Microphone Not Connected: Check connection")
             
+
+
 
 if __name__ == "__main__":
     print("=============")
